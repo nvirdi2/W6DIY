@@ -109,7 +109,7 @@ namespace sdds
 		fout.close();
 	}
 
-	/*void Stats::loadNums() 
+	void Stats::loadNums() 
 	{
 		m_numOfNums = 0;
 		ifstream file(m_filename);
@@ -137,33 +137,6 @@ namespace sdds
 				i = stod(num);
 				m_num[index] = i;
 				index++;
-			}
-
-			file.close();
-		}
-	}*/
-	void Stats::loadNums() {
-		m_numOfNums = 0;
-		ifstream file(m_filename);
-
-		if (file.good()) {
-			string line;
-			getline(file, line);
-			stringstream ss(line);
-			double a;
-			string num;
-
-			while (getline(ss, num, ',')) {
-				m_numOfNums++;
-			}
-
-			m_num = new double[m_numOfNums];
-			stringstream ss2(line);
-			int idex = 0;
-			while (getline(ss2, num, ',')) {
-				a = stod(num);
-				m_num[idex] = a;
-				idex++;
 			}
 
 			file.close();
@@ -328,7 +301,7 @@ namespace sdds
 	}
 
 
-	Stats& Stats::operator=(Stats& stat) 
+	/*Stats& Stats::operator=(Stats& stat) 
 	{
 		ifstream file1(m_filename);
 		ifstream file2(stat.m_filename);
@@ -349,5 +322,24 @@ namespace sdds
 
 			loadNums();
 		} return *this;
+	}*/
+	Stats& Stats::operator=(Stats& other) {
+		ifstream file1(m_filename);
+		ifstream file2(other.m_filename);
+
+		if (file1.good() && file2.good()) {
+
+			m_noOfColumns = other.m_noOfColumns;
+			m_precision = other.m_precision;
+			m_columnWidth = other.m_columnWidth;
+			other.saveAs(m_filename);
+			delete[] m_num;
+			delete[] other.m_num;
+			m_numOfNums = 0;
+			other.m_numOfNums = 0;
+			loadNums();
+		}
+
+		return *this;
 	}
 }
