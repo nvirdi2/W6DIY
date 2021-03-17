@@ -247,7 +247,7 @@ namespace sdds
 		ostr << fixed << setprecision(m_precision);
 
 		for (int e = 0; e < m_numOfNums; e++) {
-			ostr << right << setw(m_columnWidth) << m_arr[e];
+			ostr << right << setw(m_columnWidth) << m_num[e];
 			check = false;
 			if ((e + 1) % m_noOfColumns == 0) {
 				check = true;
