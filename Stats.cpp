@@ -294,11 +294,11 @@ namespace sdds
 			ostr << endl;
 			ostr << fixed << setprecision(m_precision);
 			bool lookover = false;
-			for (int i = 0; i < m_numOfNums; ++) {
+			for (int i = 0; i < m_numOfNums; ++i) {
 				if (m_num[i] >= min && m_num[i] <= max) {
 					lookover = false;
 					ostr << right << setw(m_columnWidth) << m_num[i];
-					if ((add + 1) % m_noOfColumns == 0) {
+					if ((x + 1) % m_noOfColumns == 0) {
 						lookover = true;
 						ostr << endl;
 					}
