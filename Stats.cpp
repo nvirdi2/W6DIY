@@ -195,7 +195,7 @@ namespace sdds
 			return ostr;
 	}
 
-	std::ostream& Stats::view(std::ostream& ostr) const 
+	/*std::ostream& Stats::view(std::ostream& ostr) const 
 	{
 		if (m_num == nullptr || m_filename == nullptr || m_numOfNums == 0) 
 		{
@@ -231,6 +231,34 @@ namespace sdds
 		}
 		ostr << "Total of " << m_numOfNums << " listed!" << endl;
 			return ostr;
+	}*/
+	std::ostream& Stats::view(std::ostream& ostr) const {
+		if (m_num == nullptr || m_filename == nullptr || m_numOfNums == 0) {
+			return ostr;
+		}
+
+		ostr << m_filename << endl;
+		for (int i = 0; m_filename[i] != '\0'; i++) {
+			ostr << "=";
+		}
+
+		bool check = false;
+		ostr << endl << endl;
+		ostr << fixed << setprecision(m_precision);
+
+		for (int e = 0; e < m_numOfNums; e++) {
+			ostr << right << setw(m_columnWidth) << m_arr[e];
+			check = false;
+			if ((e + 1) % m_noOfColumns == 0) {
+				check = true;
+				ostr << endl;
+			}
+		}
+
+		if (!check)
+			ostr << endl;
+		ostr << "Total of " << m_numOfNums << " listed!" << endl;
+		return ostr;
 	}
 
 	std::istream& Stats::getFile(std::istream& istr) 
@@ -301,7 +329,7 @@ namespace sdds
 	}
 
 
-	/*Stats& Stats::operator=(Stats& stat) 
+	Stats& Stats::operator=(Stats& stat) 
 	{
 		ifstream file1(m_filename);
 		ifstream file2(stat.m_filename);
@@ -322,24 +350,5 @@ namespace sdds
 
 			loadNums();
 		} return *this;
-	}*/
-	Stats& Stats::operator=(Stats& other) {
-		ifstream file1(m_filename);
-		ifstream file2(other.m_filename);
-
-		if (file1.good() && file2.good()) {
-
-			m_noOfColumns = other.m_noOfColumns;
-			m_precision = other.m_precision;
-			m_columnWidth = other.m_columnWidth;
-			other.saveAs(m_filename);
-			delete[] m_num;
-			delete[] other.m_num;
-			m_numOfNums = 0;
-			other.m_numOfNums = 0;
-			loadNums();
-		}
-
-		return *this;
 	}
 }
