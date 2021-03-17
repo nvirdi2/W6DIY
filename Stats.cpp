@@ -162,7 +162,7 @@ namespace sdds
 			int idex = 0;
 			while (getline(ss2, num, ',')) {
 				a = stod(num);
-				m_arr[idex] = a;
+				m_num[idex] = a;
 				idex++;
 			}
 
