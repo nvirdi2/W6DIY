@@ -254,24 +254,22 @@ namespace sdds
 		} return true;
 	}
 
-	/*unsigned Stats::occurrence(double min, double max, std::ostream& ostr) 
+	unsigned Stats::occurrence(double min, double max, std::ostream& ostr) 
 	{
 		unsigned x = 0;
-
 		if (*this) 
 		{
 			ostr << endl;
 			ostr << fixed << setprecision(m_precision);
-
 			bool lookover = false;
-
-			for (int x = 0; x < m_numOfNums; x++) 
+			
+			for (int i = 0; i < m_numOfNums; ++i) 
 			{
-				if (m_num[x] >= min && m_num[x] <= max) 
+				if (m_num[i] >= min && m_num[i] <= max) 
 				{
 					lookover = false;
-					ostr << right << setw(m_columnWidth) << m_num[x];
-
+					ostr << right << setw(m_columnWidth) << m_num[i];
+					
 					if ((x + 1) % m_noOfColumns == 0) 
 					{
 						lookover = true;
@@ -285,30 +283,6 @@ namespace sdds
 			{
 				ostr << endl;
 			}
-			ostr << "Total of " << x << " numbers are between " << min << " and " << max << endl;
-		} return x;
-	}*/
-		unsigned Stats::occurrence(double min, double max, std::ostream& ostr) {
-		unsigned x = 0;
-		if (*this) {
-			ostr << endl;
-			ostr << fixed << setprecision(m_precision);
-			bool lookover = false;
-			for (int i = 0; i < m_numOfNums; ++i) {
-				if (m_num[i] >= min && m_num[i] <= max) {
-					lookover = false;
-					ostr << right << setw(m_columnWidth) << m_num[i];
-					if ((x + 1) % m_noOfColumns == 0) {
-						lookover = true;
-						ostr << endl;
-					}
-
-					x++;
-				}
-			}
-
-			if (!lookover)
-				ostr << endl;
 			ostr << "Total of " << x << " numbers are between " << min << " and " << max << endl;
 		}
 
