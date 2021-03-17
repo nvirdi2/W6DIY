@@ -289,30 +289,30 @@ namespace sdds
 		} return x;
 	}*/
 		unsigned Stats::occurrence(double min, double max, std::ostream& ostr) {
-		unsigned count = 0;
+		unsigned x = 0;
 		if (*this) {
 			ostr << endl;
 			ostr << fixed << setprecision(m_precision);
-			bool check = false;
-			for (int e = 0; e < m_numOfNums; e++) {
-				if (m_num[e] >= min && m_num[e] <= max) {
-					check = false;
-					ostr << right << setw(m_columnWidth) << m_num[e];
-					if ((count + 1) % m_noOfColumns == 0) {
-						check = true;
+			bool lookover = false;
+			for (int i = 0; i < m_numOfNums; ++) {
+				if (m_num[i] >= min && m_num[i] <= max) {
+					lookover = false;
+					ostr << right << setw(m_columnWidth) << m_num[i];
+					if ((add + 1) % m_noOfColumns == 0) {
+						lookover = true;
 						ostr << endl;
 					}
 
-					count++;
+					x++;
 				}
 			}
 
-			if (!check)
+			if (!lookover)
 				ostr << endl;
-			ostr << "Total of " << count << " numbers are between " << min << " and " << max << endl;
+			ostr << "Total of " << x << " numbers are between " << min << " and " << max << endl;
 		}
 
-		return count;
+		return x;
 	}
 
 
