@@ -8,10 +8,11 @@
 #include <iostream>
 #include <iomanip>
 #include <fstream>
-#include "cstring.h"
-#include "Stats.h"
 #include <string>
 #include <sstream> 
+
+#include "cstring.h"
+#include "Stats.h"
 
 using namespace std;
 namespace sdds
