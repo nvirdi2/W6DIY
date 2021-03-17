@@ -143,7 +143,7 @@ namespace sdds
 		}
 	}*/
 	void Stats::loadNums() {
-		m_noOfNums = 0;
+		m_numOfNums = 0;
 		ifstream file(m_filename);
 
 		if (file.good()) {
@@ -154,10 +154,10 @@ namespace sdds
 			string num;
 
 			while (getline(ss, num, ',')) {
-				m_noOfNums++;
+				m_numOfNums++;
 			}
 
-			m_arr = new double[m_noOfNums];
+			m_num = new double[m_numOfNums];
 			stringstream ss2(line);
 			int idex = 0;
 			while (getline(ss2, num, ',')) {
