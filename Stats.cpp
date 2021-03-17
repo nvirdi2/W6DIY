@@ -195,7 +195,7 @@ namespace sdds
 			return ostr;
 	}
 
-	/*std::ostream& Stats::view(std::ostream& ostr) const 
+	std::ostream& Stats::view(std::ostream& ostr) const 
 	{
 		if (m_num == nullptr || m_filename == nullptr || m_numOfNums == 0) 
 		{
@@ -231,34 +231,6 @@ namespace sdds
 		}
 		ostr << "Total of " << m_numOfNums << " listed!" << endl;
 			return ostr;
-	}*/
-	std::ostream& Stats::view(std::ostream& ostr) const {
-		if (m_num == nullptr || m_filename == nullptr || m_numOfNums == 0) {
-			return ostr;
-		}
-
-		ostr << m_filename << endl;
-		for (int i = 0; m_filename[i] != '\0'; i++) {
-			ostr << "=";
-		}
-
-		bool check = false;
-		ostr << endl << endl;
-		ostr << fixed << setprecision(m_precision);
-
-		for (int e = 0; e < m_numOfNums; e++) {
-			ostr << right << setw(m_columnWidth) << m_num[e];
-			check = false;
-			if ((e + 1) % m_noOfColumns == 0) {
-				check = true;
-				ostr << endl;
-			}
-		}
-
-		if (!check)
-			ostr << endl;
-		ostr << "Total of " << m_numOfNums << " listed!" << endl;
-		return ostr;
 	}
 
 	std::istream& Stats::getFile(std::istream& istr) 
@@ -282,7 +254,7 @@ namespace sdds
 		} return true;
 	}
 
-	unsigned Stats::occurrence(double min, double max, std::ostream& ostr) 
+	/*unsigned Stats::occurrence(double min, double max, std::ostream& ostr) 
 	{
 		unsigned x = 0;
 
@@ -315,6 +287,32 @@ namespace sdds
 			}
 			ostr << "Total of " << x << " numbers are between " << min << " and " << max << endl;
 		} return x;
+	}*/
+		unsigned Stats::occurrence(double min, double max, std::ostream& ostr) {
+		unsigned count = 0;
+		if (*this) {
+			ostr << endl;
+			ostr << fixed << setprecision(m_precision);
+			bool check = false;
+			for (int e = 0; e < m_numOfNums; e++) {
+				if (m_num[e] >= min && m_num[e] <= max) {
+					check = false;
+					ostr << right << setw(m_columnWidth) << m_num[e];
+					if ((count + 1) % m_noOfColumns == 0) {
+						check = true;
+						ostr << endl;
+					}
+
+					count++;
+				}
+			}
+
+			if (!check)
+				ostr << endl;
+			ostr << "Total of " << count << " numbers are between " << min << " and " << max << endl;
+		}
+
+		return count;
 	}
 
 
