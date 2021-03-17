@@ -1,0 +1,20 @@
+Navdeep Virdi
+166485193
+March 16, 2021
+Reflection
+This workshop lab was very interesting as I got to learn many new concepts. 
+To start, there were many obstacles in the DIY that I encountered and I would say that
+that was the hardest modules of this workshop to complete. However, defining copy constructors
+and assignments were very easy, creating them in the module took a lot of work. I felt as
+the creating was not to difficult, but not the easiest. To continue, I also learned a lot about
+overload insertion and extraction operators so I could print using ostream or istream. This is a
+topic I will definitely work on, as it did give me many issues along the way. This concept felt 
+very new and it took a lot of time for me to process and understand what it is saying and doing. 
+I believe the difficult part was more understanding the concept rather than applying it. Do not get
+me wrong! Applying the concept was difficult too just not as much as understanding. I worked my way
+around this situation by watching YouTube videos on it and looking at class code examples on the 
+BTP 200 websites for more information. The simple file IO using ifstream and ofstream was easy to 
+grasp, just it took a lot of effort to understand it at the start. The biggest issue I ran into 
+while doing my DIY was carrying decimals. I have never had an issue with carrying decimals and this
+was one of the issues I ran into that cause such a struggle to understand where it was. Turns out
+I was using setprecision in the wrong area and it was not carrying it out to print.
